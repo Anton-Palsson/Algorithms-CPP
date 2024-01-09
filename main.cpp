@@ -52,12 +52,13 @@ int main()
 
 	
 	
-	// DEL 2 ANVÄND ALGORITHM
+	//DEL 2 ANVÄND ALGORITHM
 	float limit = 99.9;
 
-	bool overLimit = count_if(sensorData.begin(), sensorData.end(), [&](const SensorData &data){
-		return data.GetSensorType() == SensorType::SpeedInKmh && data.GetValue() > limit;
-	}) > 0;
+    bool overLimit = any_of(sensorData.begin(), sensorData.end(), [&](const SensorData &data) {
+        return data.GetSensorType() == SensorType::SpeedInKmh && data.GetValue() > limit;
+    });
+
 
 	if (overLimit) {
 		cout << "Maximum speed reached" << endl;
@@ -65,6 +66,7 @@ int main()
 	} else {
 		cout << "No maximum speed reached" << endl;
 	}
+
 
 	 
 	 //DEL 3 ANVÄND ALGORITHM

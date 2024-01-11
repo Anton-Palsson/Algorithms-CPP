@@ -69,14 +69,20 @@ int main()
 
 
 	 
-	 //DEL 3 ANVÄND ALGORITHM
-	   auto updateFuelConsumption = [](SensorData &entry) {
-        if (entry.GetSensorType() == SensorType::FuelConsumption)
-        {
-            entry.SetValue(entry.GetValue() * 1.75);
-            //Rör ej!! Endast för att se om det funkar cout << "SensorType: " << static_cast<int>(entry.GetSensorType()) << ", Value: " << entry.GetValue() << endl;
-        }
-    };
+// DEL 3 ANVÄND ALGORITHM
+int count = 0;
+auto updateFuelConsumption = [&count](SensorData &entry) {
+    if (entry.GetSensorType() == SensorType::FuelConsumption && count < 10) {
+    
+        cout << "Before - SensorType: " << static_cast<int>(entry.GetSensorType()) << ", Value: " << entry.GetValue() << endl;
+
+        entry.SetValue(entry.GetValue() * 1.75);
+
+        cout << "After  - SensorType: " << static_cast<int>(entry.GetSensorType()) << ", Value: " << entry.GetValue() << endl;
+
+        count++;
+    }
+};
 
     for_each(sensorData.begin(), sensorData.end(), updateFuelConsumption);
 
@@ -119,3 +125,4 @@ time_t CreateTime(int year, int month, int day, int hour, int minute, int second
 	tid.tm_sec = second;
 	return mktime(&tid);
 }
+

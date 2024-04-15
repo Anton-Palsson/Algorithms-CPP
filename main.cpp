@@ -37,7 +37,7 @@ public:
 void FillData(vector<SensorData> &v);
 time_t CreateTime(int year, int month, int day, int hour, int minute, int second);
 int main()
-{   // DEL 1 ANVÄND ALGORITHM
+{   //ANVÄND ALGORITHM
 	vector<SensorData> sensorData;
 	FillData(sensorData);
 
@@ -52,7 +52,7 @@ int main()
 
 	
 	
-	//DEL 2 ANVÄND ALGORITHM
+	//ANVÄND ALGORITHM
 	float limit = 99.9;
 
     bool overLimit = any_of(sensorData.begin(), sensorData.end(), [&](const SensorData &data) {
@@ -69,7 +69,7 @@ int main()
 
 
 	 
-// DEL 3 ANVÄND ALGORITHM
+// ALGORITHM
 int count = 0;
 auto updateFuelConsumption = [&count](SensorData &entry) {
     if (entry.GetSensorType() == SensorType::FuelConsumption && count < 10) {
